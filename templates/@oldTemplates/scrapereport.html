@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+{% load static %}
+
+<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<header>
+					<h3><center>Data Terakhir kali di update pada tanggal : {{ detik.0.latest_update }}</center></h3>
+					<br><br>
+				</header>
+				<div class="row">
+					<div class="3u">
+					<img src="{% static 'images/detik.png' %}">
+					<br><br>
+						<section>
+							{% for a in detik %}
+							<h2>Tanggal : {{a.latest_update}} <br></h2>
+							>> Waktu Scraping : {{a.scrap_time}} Detik <br>
+							>> Total Berita didapat : {{a.total_news}}
+							
+							<br><br>
+							-------------------------------------------
+							{% endfor %}
+						</section>
+					</div>
+					<div class="3u">
+					<img src="{% static 'images/kompas.png' %}">
+					<br><br><br>
+						<section>
+							{% for a in kompas %}
+							<h2>Tanggal : {{a.latest_update}} <br></h2>
+							>> Waktu Scraping : {{a.scrap_time}} Detik <br>
+							>> Total Berita didapat : {{a.total_news}}
+							<br><br>
+							-------------------------------------------
+							{% endfor %}
+						</section>
+					</div>
+					<div class="3u">
+					<img src="{% static 'images/antara.png' %}">
+					<br><br>
+						<section>
+							{% for a in antara %}
+							<h2>Tanggal : {{a.latest_update}} <br></h2>
+							>> Waktu Scraping : {{a.scrap_time}} Detik <br>
+							>> Total Berita didapat : {{a.total_news}}
+							<br><br>
+							-------------------------------------------
+							{% endfor %}
+						</section>
+					</div>
+					<div class="3u">
+						<section>
+						<!-- !Original Deleted -->
+						</section>
+					</div>
+				</div>
+				<div class="divider">&nbsp;</div>
+				<div class="row">
+				
+
+						
+				</div>
+			
+			</div>
+		</div>
+	<!-- Main -->
+					
+{% endblock  %}

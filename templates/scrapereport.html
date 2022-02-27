@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content  %}
+{% load static %}
+			<!-- Highlights -->
+				<section id="highlights" class="wrapper style3">
+					<div class="title">Scrap History </div>
+							<h5><center>Data Terakhir kali di update pada tanggal : {{ detik.0.latest_update }} Dengan Total Waktu Scraping selama {{ total }} menit</center></h5>
+						<br><br>	
+						<div class="container">
+						<div class="row aln-center">
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/detik.png' %}"><br><br><br><br>
+								{% for a in detik %}
+								<h3>Tanggal : {{a.latest_update}} <br></h3>
+								Waktu Scraping : {{a.scrap_time}} Detik <br>
+								Total Berita didapat : {{a.total_news}}
+								<br><br>
+								{% endfor %}
+							</section>
+							</div>
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/kompas.png' %}"><br><br><br><br><br>
+								{% for a in kompas %}
+								<h3>Tanggal : {{a.latest_update}} <br></h3>
+								Waktu Scraping : {{a.scrap_time}} Detik <br>
+								Total Berita didapat : {{a.total_news}}
+								<br><br>
+								{% endfor %}
+								</section>
+							</div>
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/antara.png' %}"><br><br><br><br>
+								{% for a in antara %}
+								<h3>Tanggal : {{a.latest_update}} <br></h3>
+								Waktu Scraping : {{a.scrap_time}} Detik <br>
+								Total Berita didapat : {{a.total_news}}
+								<br><br>
+								{% endfor %}
+								</section>
+							</div>
+						</div>
+					</div>
+				</section>
+				<button id="token">Update Token</button>
+				<ul class="actions">
+					<li><button id="update" href="#" class="button style1">UPDATE</button></li>
+				</ul>
+
+				<script>
+					const scrap = document.getElementById('token');
+					const update = document.getElementById('update');
+					scrap.addEventListener('click', res=>{
+						fetch(`http://127.0.0.1:8000/analisa/token`)
+						.then(response => response.json())
+					})
+
+					update.addEventListener('click', res=>{
+						fetch(`http://127.0.0.1:8000/scrap`)
+						.then(response => response.json())
+					})
+				</script>
+
+{% endblock  %}

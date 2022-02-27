@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content  %}
+{% load static %}
+			<!-- Highlights -->
+				<section id="highlights" class="wrapper style3">
+					<div class="title">Data Analysis </div>
+					<form>
+					<div class="container">
+						<div class="row">
+							<div class="col-6">
+								<div class="form-group">
+									<input type="text" name="ada_token_1" class="form-control" id="data_1" placeholder="covid-19, Kanker, Demam Berdarah, ...">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<input type="text" name="ada_token_2" class="form-control" id="data_2" placeholder="aids, hiv, tumor otak, ...">
+								</div>							
+							</div>
+							<div class="col-2">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Cari</button>
+								</div>
+							</div>
+						</div>		
+					</form>					
+						
+						<br><br>	
+						<div class="container">
+						<div class="row aln-center">
+						<!--button onclick="myFunction()" class="btn btn-primary">jameeets</button-->
+							
+							<canvas id="month" width="200" height="100" ></canvas>
+							<canvas id="perbandingan" width="400" height="190"></canvas>
+							
+							<br><br><br><br>
+							<canvas id="pie" width="400" height="200"></canvas>
+							<canvas id="total_detik" width="200" height="80"></canvas>
+							<canvas id="total_kompas" width="200" height="80"></canvas>
+							<canvas id="total_antara" width="200" height="80"></canvas>
+							
+							
+						</div>
+					</div>
+				</section>
+
+				<script src="{% static 'js/get_chart.js' %}"></script>
+				<script>
+					
+					function myFunction() {
+					var x = document.getElementById("total_detik");
+					if (x.style.display === "none") {
+						x.style.display = "block";
+					} else {
+						x.style.display = "none";
+					}
+					}
+				</script>
+
+{% endblock  %}

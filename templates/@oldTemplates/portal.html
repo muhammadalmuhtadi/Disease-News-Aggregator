@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+{% load static %}
+
+
+<!-- Main -->
+
+		
+
+		<div id="main">
+		
+			<div class="container">
+				<header>
+
+					<h2><!-- !Original Deleted --></h2>
+					<form method="GET">
+						<div class="wrapsearch">
+							<div class="search">
+								<input type="text" name="ada_token" class="searchTerm" placeholder="What are you looking for?">
+								<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>	
+						
+						<select name="bulan">
+							<option value="">Tampilkan Semua Bulan</option>
+							<option value="Jan">Januari</option>
+							<option value="Feb">Februari</option>
+							<option value="Mar">Maret</option>
+							<option value="Apr">April</option>
+							<option value="Mai">Mei</option>
+							<option value="Jun">Juni</option>
+							<option value="Jul">Juli</option>
+							<option value="Aug">Agustus</option>
+							<option value="Sep">September</option>
+							<option value="Oct">Oktober</option>
+							<option value="Nov">November</option>
+							<option value="Dec">Desember</option>
+						</select>
+						
+					</form>
+
+				</header>
+				
+				<div class="row">
+					<div class="3u">
+					<img src="{% static 'images/detik.png' %}">
+					<br><br>
+						<section>
+							{% for a in detik %}
+							<a href="{{a.img}}" class="image full"><img src="{{a.img}}" alt="" /></a>
+							{{a.date}}
+							<p><b>{{a.title}}</b></p>
+							<a href="{{a.link}}" class="button">Baca Lebih Lanjut</a>
+							<br><br><br><br>
+							{% endfor %}
+						</section>
+					</div>
+					<div class="3u">
+					<img src="{% static 'images/kompas.png' %}">
+					<br><br><br>
+						<section>
+							{% for a in kompas %}
+							<a href="{{a.img}}" class="image full"><img src="{{a.img}}" alt="" /></a>
+							{{a.date}}
+							<p><b>{{a.title}}</b></p>
+							<a href="{{a.link}}" class="button">Baca Lebih Lanjut</a>
+							<br><br><br><br>
+							{% endfor %}
+						</section>
+					</div>
+					<div class="3u">
+					<img src="{% static 'images/antara.png' %}">
+					<br><br>
+						<section>
+							{% for a in antara %}
+							<a href="{{a.img}}" class="image full"><img src="{{a.img}}" alt="" /></a>
+							{{a.date}}
+							<p><b>{{a.title}}</b></p>
+							<a href="{{a.link}}" class="button">Baca Lebih Lanjut</a>
+							<br><br><br><br>
+							{% endfor %}
+						</section>
+					</div>
+					
+				</div>
+				<div class="divider">&nbsp;</div>
+				<div class="row">
+				
+
+						
+				</div>
+			
+			</div>
+		</div>
+	<!-- Main -->
+					
+{% endblock  %}

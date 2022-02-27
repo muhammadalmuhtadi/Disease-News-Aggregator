@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content  %}
+{% load static %}
+
+			<!-- Highlights -->
+				<section id="highlights" class="wrapper style3">
+					<div class="title">Berita Penyakit Indonesia</div>
+					<form>
+					<div class="container">
+						<div class="row">
+							<div class="col-6">
+								<div class="form-group">
+									<input type="text" name="ada_token" class="form-control" id=""  placeholder="Nama Penyakit, Obat, ...">
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="form-group">
+									<select class="form-control" name="bulan">
+										<option value="">Tampilkan Semua Bulan</option>
+										<option value="Jan">Januari</option>
+										<option value="Feb">Februari</option>
+										<option value="Mar">Maret</option>
+										<option value="Apr">April</option>
+										<option value="May">Mei</option>
+										<option value="Jun">Juni</option>
+										<option value="Jul">Juli</option>
+										<option value="Aug">Agustus</option>
+										<option value="Sep">September</option>
+										<option value="Oct">Oktober</option>
+										<option value="Nov">November</option>
+										<option value="Dec">Desember</option>
+									</select>
+									</div>
+							</div>
+							<div class="col-2">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Cari</button>
+								</div>
+							</div>
+						</div>		
+						</form>
+						<br><br>	
+
+						<div class="row aln-center">
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/detik.png' %}"><br><br><br><br>
+									{% for a in detik %}
+									<a href="{{a.img}}" class="image featured"><img src="{{a.img}}" alt="" /></a>
+									<h3>{{a.date}}</h3>
+									<h3><p><b>{{a.title}}</b></p></h3>
+									<ul class="actions">
+										<li><a href="{{a.link}}" class="button style1">Baca Lebih Lanjut</a></li>
+									</ul>
+									<br><br><br><br>
+									{% endfor %}
+								</section>
+							</div>
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/kompas.png' %}"><br><br><br><br><br>
+									{% for a in kompas %}
+									<a href="{{a.img}}" class="image featured"><img src="{{a.img}}" alt="" /></a>
+									<h3>{{a.date}}</h3>
+									<h3><p><b>{{a.title}}</b></p></h3>
+									<ul class="actions">
+										<li><a href="{{a.link}}" class="button style1">Baca Lebih Lanjut</a></li>
+									</ul>
+									<br><br><br><br>
+									{% endfor %}
+								</section>
+							</div>
+							<div class="col-4 col-12-medium">
+								<section class="highlight">
+								<img src="{% static 'images/antara.png' %}"><br><br><br><br>
+									{% for a in antara %}
+									<a href="{{a.img}}" class="image featured"><img src="{{a.img}}" alt="" /></a>
+									<h3>{{a.date}}</h3>
+									<h3><p><b>{{a.title}}</b></p></h3>
+									<ul class="actions">
+										<li><a href="{{a.link}}" class="button style1">Baca Lebih Lanjut</a></li>
+									</ul>
+									<br><br><br><br>
+									{% endfor %}
+								</section>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
+{% endblock  %}

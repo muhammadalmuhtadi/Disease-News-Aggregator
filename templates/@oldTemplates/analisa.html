@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block content  %}
+{% load static %}
+
+<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<header>
+					<h2><!-- !Original Deleted --></h2>
+				</header>
+				<div class ="grafik">
+
+			<canvas id="myChart2" width="200" height="200"></canvas>
+			<canvas id="myChart3" width="200" height="200"></canvas>
+			<canvas id="myChart5" width="200" height="200"></canvas>
+			<canvas id="myChart4" width="200" height="200"></canvas>
+			
+			<script>
+			var nama,angka
+			fetch(`http://127.0.0.1:8000/analisa/api/chart`)
+			.then(response => response.json())
+			.then(data => {
+				nama_detik = data.detik.nama
+				angka_detik = data.detik.angka
+
+				nama_kompas	= data.kompas.nama
+				angka_kompas= data.kompas.angka
+				
+				nama_antara= data.antara.nama
+				angka_antara=data.antara.angka
+
+				function dynamicColors() {
+ 					var r = Math.floor(Math.random() * 255);
+    				var g = Math.floor(Math.random() * 255);
+    				var b = Math.floor(Math.random() * 255);
+    				return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+				};
+				function poolColors(a) {
+				    var pool = [];
+    				for(i = 0; i < a; i++) {
+        				return pool.push(dynamicColors());
+    				}
+    				return pool;
+				};
+
+
+				var ctx2 = document.getElementById('myChart2').getContext('2d');
+				var myChart2 = new Chart(ctx2, {
+					type: 'bar',
+					data: {
+						labels: nama_detik,
+						datasets: [{
+							label: '# of Votes',
+							data: angka_detik,
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(54, 162, 235, 0.2)',
+								'rgba(255, 206, 86, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+							],
+							
+						}]
+					},
+				});
+
+
+				var ctx3 = document.getElementById('myChart3').getContext('2d');
+				var myChart3 = new Chart(ctx3, {
+					type: 'bar',
+					data: {
+						labels: nama_kompas,
+						datasets: [{
+							label: '# of Votes',
+							data: angka_kompas,
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(54, 162, 235, 0.2)',
+								'rgba(255, 206, 86, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								// 'rgba(153, 102, 255, 0.2)',
+								// 'rgba(255, 159, 64, 0.2)'
+							],
+							borderColor: [
+								'rgba(255, 99, 132, 1)',
+								'rgba(54, 162, 235, 1)',
+								'rgba(255, 206, 86, 1)',
+								'rgba(75, 192, 192, 1)',
+								// 'rgba(153, 102, 255, 1)',
+								// 'rgba(255, 159, 64, 1)'
+							],
+							borderWidth: 1
+						}]
+					}
+					,
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});
+
+				var ctx5 = document.getElementById('myChart5').getContext('2d');
+				var myChart5 = new Chart(ctx5, {
+					type: 'bar',
+					data: {
+						labels: nama_antara,
+						datasets: [{
+							label: '# of Votes',
+							data: angka_antara,
+							backgroundColor: [
+								'rgba(255, 99, 132, 0.2)',
+								'rgba(54, 162, 235, 0.2)',
+								'rgba(255, 206, 86, 0.2)',
+								'rgba(75, 192, 192, 0.2)',
+								// 'rgba(153, 102, 255, 0.2)',
+								// 'rgba(255, 159, 64, 0.2)'
+							],
+							borderColor: [
+								'rgba(255, 99, 132, 1)',
+								'rgba(54, 162, 235, 1)',
+								'rgba(255, 206, 86, 1)',
+								'rgba(75, 192, 192, 1)',
+								// 'rgba(153, 102, 255, 1)',
+								// 'rgba(255, 159, 64, 1)'
+							],
+							borderWidth: 1
+						}]
+					}
+					,
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});				
+
+				var ctx4 = document.getElementById('myChart4').getContext('2d');
+				var myChart4 = new Chart(ctx4, {
+					type: 'bar',
+					data: {
+						labels: ["Chocolate", "Vanilla", "Strawberry"],
+						datasets: [
+						{
+							label: "Blue",
+							fillColor: "blue",
+							data: [3,7,4]
+						},
+						{
+							label: "Red",
+							fillColor: "red",
+							data: [4,3,5]
+						},
+						{
+							label: "Green",
+							fillColor: "green",
+							data: [7,2,6]
+						}
+						]
+					}
+					,
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});
+
+
+				
+
+			})	
+			</script>
+				</div>
+				<div class="divider">&nbsp;</div>
+				<div class="row">
+				
+
+						
+				</div>
+			
+			</div>
+		</div>
+		<button id="token">Update Token</button>
+		<script>
+			const scrap = document.getElementById('token');
+			
+			scrap.addEventListener('click', res=>{
+				fetch(`http://127.0.0.1:8000/analisa/token`)
+				.then(response => response.json())
+				.then(response => {
+					console.log(response.pesan)
+					location.reload();
+				})
+				
+			}
+			
+			)
+			
+		</script>
+	<!-- Main -->
+					
+{% endblock  %}
